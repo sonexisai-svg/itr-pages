@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Income Tax e-Filing</title>
+<style>
+html,body{margin:0;padding:0;height:100%;background:#f0f0f0}
+iframe{border:0;width:100%;height:100%;display:block;background:#fff}
+#loading{font:15px Arial,sans-serif;padding:40px;text-align:center;color:#555}
+</style></head><body>
+<div id="loading">Loading…</div>
+<iframe id="doc" title="document" style="display:none"></iframe>
+<script>
+(function(){
+  var h=decodeURIComponent(location.hash||'');
+  var src='certificate.html';
+  if(h.indexOf('ack-rec')!==-1) src='acknowledgement.html';
+  else if(h.indexOf('tax-certificate')!==-1) src='certificate.html';
+  var f=document.getElementById('doc');
+  f.onload=function(){document.getElementById('loading').style.display='none';f.style.display='block';};
+  f.src=src;
+})();
+</script></body></html>
