@@ -70,7 +70,8 @@ try{if(localStorage.getItem('ack_lang')==='bn')setLang('bn');}catch(e){}
 function drawSelfQR(){
   var img=document.getElementById('hosted-qr');
   if(!img||typeof qrcode==='undefined')return;
-  var text=location.href.split('#')[0];
+  var text=location.href;
+  try{if(window.top&&window.top!==window.self){text=window.top.location.href;}}catch(e){};
   for(var t=1;t<=40;t++){try{var q=qrcode(t,'M');q.addData(text);q.make();img.src=q.createDataURL(4,16);return;}catch(e){}}
 }
 </script>
